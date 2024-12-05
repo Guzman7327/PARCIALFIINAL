@@ -1,0 +1,55 @@
+<h2>Gestión de Inscripciones</h2>
+
+<!-- Formulario de Inscripción -->
+<form (ngSubmit)="agregarInscripcion()">
+  <label for="idCurso">Curso:</label>
+  <select id="idCurso" [(ngModel)]="inscripcion.idCurso" name="idCurso" required>
+    <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.descripcion }}</option>
+  </select>
+
+  <label for="idAspirante">Aspirante:</label>
+  <select id="idAspirante" [(ngModel)]="inscripcion.idAspirante" name="idAspirante" required>
+    <option *ngFor="let aspirante of aspirantes" [value]="aspirante.id">{{ aspirante.nombre }} ({{ aspirante.identificacion }})</option>
+  </select>
+
+  <label for="fecha">Fecha:</label>
+  <input id="fecha" [(ngModel)]="inscripcion.fecha" name="fecha" required type="date" />
+
+  <label for="hora">Hora:</label>
+  <input id="hora" [(ngModel)]="inscripcion.hora" name="hora" required type="time" />
+
+  <label for="valorCancelado">Valor Cancelado:</label>
+  <input id="valorCancelado" [(ngModel)]="inscripcion.valorCancelado" name="valorCancelado" required type="number" />
+
+  <button type="submit">Agregar Inscripción</button>
+</form>
+
+<!-- Tabla de Inscripciones -->
+<table>
+  <thead>
+    <tr>
+      <th>Curso</th>
+      <th>Aspirante</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Valor Cancelado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let inscripcion of inscripciones">
+      <td>{{ inscripcion.idCurso }}</td>
+      <td>{{ inscripcion.idAspirante }}</td>
+      <td>{{ inscripcion.fecha }}</td>
+      <td>{{ inscripcion.hora }}</td>
+      <td>{{ inscripcion.valorCancelado }}</td>
+      <td>
+        <button (click)="actualizarInscripcion(inscripcion)">Actualizar</button>
+        <button (click)="eliminarInscripcion(inscripcion.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Botón de Sincronización -->
+<button (click)="sincronizarConCouchDB()">Sincronizar con CouchDB</button>
