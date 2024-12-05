@@ -1,0 +1,18 @@
+<h1>
+  image ID: {{ imageId() }}
+</h1>
+<a  routerLink="/">Regresar</a>
+
+
+@if (imageQuery.data() === undefined)
+{
+  <div>
+    <p>Loading...</p>
+  </div>
+}
+@else
+{
+  <div>
+    <h2>{{ imageQuery.data()?.description }}</h2>
+  </div>
+}

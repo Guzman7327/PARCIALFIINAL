@@ -1,0 +1,13 @@
+<div>
+  @for ( item of images(); track $index )
+  {
+    <div (mouseenter)="prefetchData(item.id)" >
+      <h1>{{ item.name }}</h1>
+      <p>{{ item.description }}</p>
+      <a [routerLink]="['/image',item.id]" class="hover:underline" >
+        {{ item.id }}
+      </a>
+    </div>
+
+  }
+</div>

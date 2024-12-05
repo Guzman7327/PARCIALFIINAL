@@ -1,0 +1,13 @@
+<p>images works!</p>
+<div>
+  @if (images.isLoading())
+  {
+    <div>Loading...</div>
+  }
+  @else
+  {
+    <app-images-detail [images]="images.data()?.items ?? []"></app-images-detail>
+
+
+  }
+</div>
