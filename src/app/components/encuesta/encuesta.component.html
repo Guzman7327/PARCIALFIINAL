@@ -1,0 +1,13 @@
+<form (submit)="agregarEncuesta()">
+  <input [(ngModel)]="nuevaEncuesta._id" placeholder="ID Encuesta" required />
+  <input [(ngModel)]="nuevaEncuesta.descripcion" placeholder="Descripción" required />
+  <button type="submit">Agregar Encuesta</button>
+</form>
+
+<ul>
+  <li *ngFor="let encuesta of encuestas">
+    <strong>{{ encuesta._id }}</strong>: {{ encuesta.descripcion }}
+    <button (click)="actualizarEncuesta(encuesta)">Actualizar</button>
+    <button (click)="eliminarEncuesta(encuesta)">Eliminar</button>
+  </li>
+</ul>

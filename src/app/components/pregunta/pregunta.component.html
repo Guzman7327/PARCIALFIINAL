@@ -1,0 +1,59 @@
+<div class="container">
+  <h1>Gestión de Preguntas</h1>
+
+  <!-- Formulario para agregar una nueva pregunta -->
+  <form (ngSubmit)="agregarPregunta()">
+    <div>
+      <label for="texto">Texto de la Pregunta:</label>
+      <input
+        id="texto"
+        type="text"
+        [(ngModel)]="nuevaPregunta.texto"
+        name="texto"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="encuesta">Seleccionar Encuesta:</label>
+      <select
+        id="encuesta"
+        [(ngModel)]="nuevaPregunta.encuestaId"
+        name="encuestaId"
+        required
+      >
+        <option *ngFor="let encuesta of encuestas" [value]="encuesta._id">
+          {{ encuesta.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label for="insumo">Seleccionar Insumo:</label>
+      <select
+        id="insumo"
+        [(ngModel)]="nuevaPregunta.insumoId"
+        name="insumoId"
+        required
+      >
+        <option *ngFor="let insumo of insumos" [value]="insumo._id">
+          {{ insumo.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit">Agregar Pregunta</button>
+  </form>
+
+  <hr />
+
+  <!-- Lista de preguntas -->
+  <h2>Listado de Preguntas</h2>
+  <ul>
+    <li *ngFor="let pregunta of preguntas">
+      {{ pregunta.texto }} - Encuesta: {{ getEncuestaNombre(pregunta.encuestaId) }}
+      - Insumo: {{ getInsumoNombre(pregunta.insumoId) }}
+      <button (click)="eliminarPregunta(pregunta)">Eliminar</button>
+    </li>
+  </ul>
+</div>

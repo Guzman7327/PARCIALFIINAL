@@ -1,0 +1,16 @@
+<form (submit)="agregarInsumo()">
+  <input [(ngModel)]="nuevoInsumo._id" placeholder="ID Insumo" required />
+  <input [(ngModel)]="nuevoInsumo.encuestaId" placeholder="ID Encuesta" required />
+  <input [(ngModel)]="nuevoInsumo.preguntaId" placeholder="ID Pregunta" required />
+  <input [(ngModel)]="nuevoInsumo.escalas" placeholder="Escalas" required />
+  <input [(ngModel)]="nuevoInsumo.grupoPresentacion" placeholder="Grupo de Presentación" required />
+  <button type="submit">Agregar Insumo</button>
+</form>
+
+<ul>
+  <li *ngFor="let insumo of insumos">
+    <strong>{{ insumo._id }}</strong>: {{ insumo.escalas }} - {{ insumo.grupoPresentacion }}
+    <button (click)="actualizarInsumo(insumo)">Actualizar</button>
+    <button (click)="eliminarInsumo(insumo)">Eliminar</button>
+  </li>
+</ul>

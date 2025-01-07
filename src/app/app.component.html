@@ -1,0 +1,40 @@
+<div class="container">
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+
+  <!-- Menú de navegación -->
+  <nav>
+    <ul>
+      <li><a routerLink="/encuestas" routerLinkActive="active">Encuestas</a></li>
+      <li><a routerLink="/preguntas" routerLinkActive="active">Preguntas</a></li>
+      <li><a routerLink="/insumos" routerLinkActive="active">Insumos</a></li>
+    </ul>
+  </nav>
+
+  <!-- Área donde se cargarán los componentes de acuerdo a la ruta activa -->
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Estilos opcionales para navegación -->
+<style>
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+  }
+
+  nav ul li {
+    margin-right: 15px;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  nav ul li a.active {
+    color: #28a745;
+  }
+</style>
